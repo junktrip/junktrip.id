@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Warna Background dan Foreground */
+    --background: 0 0% 100%; /* Putih */
+    --foreground: 0 0% 3.9%; /* Abu-abu gelap untuk teks */
+
+    /* Warna Card */
+    --card: 0 0% 100%; /* Putih */
+    --card-foreground: 0 0% 3.9%; /* Abu-abu gelap untuk teks card */
+
+    /* Warna Popover */
+    --popover: 0 0% 100%; /* Putih */
+    --popover-foreground: 0 0% 3.9%; /* Abu-abu gelap untuk teks popover */
+
+    /* Primary: Hijau Pastel */
+    --primary: 217 40% 18%; /* Hijau pastel (misalnya, HSL(217, 40%, 18%)) */
+    --primary-foreground: 0 0% 98%; /* Putih untuk teks utama */
+
+    /* Secondary */
+    --secondary: 0 0% 96.1%; /* Abu-abu terang */
+    --secondary-foreground: 0 0% 9%; /* Abu-abu gelap untuk teks */
+
+    /* Muted (abu-abu terang) */
+    --muted: 0 0% 96.1%; /* Abu-abu terang */
+    --muted-foreground: 0 0% 45.1%; /* Abu-abu gelap lebih soft untuk teks */
+
+    /* Accent */
+    --accent: 0 0% 96.1%; /* Abu-abu terang */
+    --accent-foreground: 0 0% 9%; /* Abu-abu gelap */
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%; /* Merah (Destructive) */
+    --destructive-foreground: 0 0% 98%; /* Putih untuk teks destructive */
+
+    /* Border dan Input */
+    --border: 0 0% 89.8%; /* Warna abu-abu terang untuk border */
+    --input: 0 0% 89.8%; /* Warna abu-abu terang untuk input */
+
+    /* Ring */
+    --ring: 0 0% 3.9%; /* Warna ring (fokus) */
+
+    /* Chart */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  /* Dark Mode */
+  .dark {
+    /* Warna Background dan Foreground dalam Mode Gelap */
+    --background: 0 0% 3.9%; /* Gelap */
+    --foreground: 0 0% 98%; /* Teks putih */
+
+    /* Card */
+    --card: 0 0% 3.9%; /* Gelap */
+    --card-foreground: 0 0% 98%; /* Teks putih */
+
+    /* Popover */
+    --popover: 0 0% 3.9%; /* Gelap */
+    --popover-foreground: 0 0% 98%; /* Teks putih */
+
+    /* Primary dalam Mode Gelap (Putih dengan teks gelap) */
+    --primary: 0 0% 98%; /* Putih */
+    --primary-foreground: 0 0% 9%; /* Teks gelap */
+
+    /* Secondary */
+    --secondary: 0 0% 14.9%; /* Gelap */
+    --secondary-foreground: 0 0% 98%; /* Teks putih */
+
+    /* Muted */
+    --muted: 0 0% 14.9%; /* Gelap */
+    --muted-foreground: 0 0% 63.9%; /* Abu-abu terang untuk teks */
+
+    /* Accent */
+    --accent: 0 0% 14.9%; /* Gelap */
+    --accent-foreground: 0 0% 98%; /* Teks putih */
+
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%; /* Merah */
+    --destructive-foreground: 0 0% 98%; /* Putih untuk teks destructive */
+
+    /* Border dan Input */
+    --border: 0 0% 14.9%; /* Gelap */
+    --input: 0 0% 14.9%; /* Gelap */
+
+    /* Ring */
+    --ring: 0 0% 83.1%; /* Terang */
+
+    /* Chart */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
