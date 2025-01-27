@@ -5,6 +5,7 @@ import { MostRent } from './(homepage-components)/most-rent'
 import { PopularDestinations } from './(homepage-components)/popular-destinations'
 import { Services } from './(homepage-components)/services'
 import { WhyChooseUs } from './(homepage-components)/why-choose-us'
+import { YoutubeEmbed } from './(homepage-components)/youtube'
 
 export const metadata = {
   title: 'Liburan asyik ke Lombok',
@@ -21,6 +22,7 @@ export default function Page() {
       {/* <Services /> */}
       <WhyChooseUs />
       <MostRent />
+      <YoutubeEmbed />
     </div>
   )
 }

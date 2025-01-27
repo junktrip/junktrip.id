@@ -5,7 +5,7 @@ import React, { JSX } from 'react'
 type HeadlineProps = {
   tip?: string
   title: string
-  subtitle: string
+  subtitle?: string
   level?: 1 | 2 | 3 | 4 | 5 | 6
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
   color?: string
