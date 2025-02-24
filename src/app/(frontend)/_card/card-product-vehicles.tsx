@@ -5,7 +5,9 @@ import { Button } from '@/components/ui/button'
 
 interface CardProductData {
   brand: string
-  image_url: string
+  image_url: {
+    url: string
+  }
   name: string
   price_with_driver: number
   price_with_no_driver: number
@@ -24,7 +26,7 @@ export const CardProductVehicles = ({ data }: CardProductProps) => {
     <div className="group flex flex-col gap-2 shadow-sm bg-white p-4 relative cursor-pointer rounded-md h-full justify-between">
       <div className="aspect-video">
         <Image
-          src={data.image_url}
+          src={data.image_url.url}
           alt="hero-image"
           width={500}
           height={500}

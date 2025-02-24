@@ -19,7 +19,7 @@ const Headline: React.FC<HeadlineProps> = ({
   subtitle,
   level = 1,
   size = '3xl',
-  color = 'text-primary',
+  color = 'text-black',
   align = 'center',
 }) => {
   const sizeClasses = {

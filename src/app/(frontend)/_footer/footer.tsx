@@ -1,11 +1,15 @@
-import { MapPinIcon, PhoneIcon, MailIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MapPinIcon, PhoneIcon, MailIcon } from 'lucide-react'
+
+type IconName = 'MapPinIcon' | 'PhoneIcon' | 'MailIcon'
 
 type FooterItem = {
-  name: string
-  href: string
+  label: string
+  value: string
+  href?: string
   path?: string
+  icon?: IconName
 }
 
 type FooterSection = {
@@ -13,20 +17,29 @@ type FooterSection = {
   list: FooterItem[]
 }
 
+const iconComponents: Record<IconName, React.ComponentType<any>> = {
+  MapPinIcon,
+  PhoneIcon,
+  MailIcon,
+}
+
 const dataFooter: FooterSection[] = [
   {
     label: 'Product',
     list: [
       {
-        name: 'Sewa Mobil',
+        label: 'Sewa Mobil',
+        value: 'Sewa Mobil',
         href: '/sewa-mobil',
       },
       {
-        name: 'Sewa Motor',
+        label: 'Sewa Motor',
+        value: 'Sewa Motor',
         href: '/sewa-motor',
       },
       {
-        name: 'Paket Wisata',
+        label: 'Paket Wisata',
+        value: 'Paket Wisata',
         href: '/paket-wisata',
       },
     ],
@@ -35,16 +48,14 @@ const dataFooter: FooterSection[] = [
     label: 'Objectives',
     list: [
       {
-        name: 'About',
+        label: 'About',
+        value: 'About',
         href: '/about',
       },
       {
-        name: 'Gallery',
+        label: 'Gallery',
+        value: 'Gallery',
         href: '/gallery',
-      },
-      {
-        name: 'Blog',
-        href: '/blog',
       },
     ],
   },
@@ -52,20 +63,46 @@ const dataFooter: FooterSection[] = [
     label: 'Resources',
     list: [
       {
-        name: 'Help Centre',
-        href: '/#',
+        label: 'Help Centre',
+        value: 'Help Centre',
+        href: '#',
       },
       {
-        name: 'Guide',
-        href: '/#',
+        label: 'Guide',
+        value: 'Guide',
+        href: '#',
       },
       {
-        name: 'Partner Network',
+        label: 'Partner Network',
+        value: 'Partner Network',
         href: '/network',
       },
       {
-        name: 'Investor Relations',
+        label: 'Investor Relations',
+        value: 'Investor Relations',
         href: '/investor',
+      },
+    ],
+  },
+  {
+    label: 'Contact Us',
+    list: [
+      {
+        label: 'Phone',
+        value: '08121232434',
+        href: 'tel:+6281212323434',
+        icon: 'PhoneIcon',
+      },
+      {
+        label: 'Email',
+        value: 'info@example.com',
+        href: 'mailto:info@example.com',
+        icon: 'MailIcon',
+      },
+      {
+        label: 'Address',
+        value: '123 Main St, City, Country',
+        icon: 'MapPinIcon',
       },
     ],
   },
@@ -73,18 +110,18 @@ const dataFooter: FooterSection[] = [
     label: 'Follow Us',
     list: [
       {
-        name: 'Facebook',
-        href: '/#',
+        label: 'Facebook',
+        value: '/#',
         path: '/socials/facebook.svg',
       },
       {
-        name: 'Instagram',
-        href: '/#',
+        label: 'Instagram',
+        value: '/#',
         path: '/socials/instagram.svg',
       },
       {
-        name: 'Tiktok',
-        href: '/#',
+        label: 'Tiktok',
+        value: '/#',
         path: '/socials/tiktok.svg',
       },
     ],
@@ -93,71 +130,80 @@ const dataFooter: FooterSection[] = [
 
 export const Footer = () => {
   return (
-    <footer className="w-full bg-primary text-white">
-      <div className="flex flex-col max-w-screen-xl mx-auto py-16 w-full 2xl:px-0 sm:px-8 px-4">
-        <div className="pb-12 grid lg:grid-cols-6 gap-4 lg:gap-0">
-          <div className="col-span-2">
-            {/* logo */}
-            <div className="pb-2">
+    <footer className="bg-primary text-white">
+      <div className="max-w-screen-xl mx-auto py-16 w-full 2xl:px-0 sm:px-8 px-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="items-center justify-center sm:items-start sm:justify-start flex flex-col text-center sm:text-start gap-4">
+            <Link href={'/'}>
               <Image
-                src="/logo-junktrip-white.png"
+                src="/junktrip-footer.png"
                 alt="Logo"
-                className="h-6 w-auto"
+                className="h-20 w-auto"
                 width={500}
                 height={500}
               />
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-sm font-thin">
-                <PhoneIcon size={15} />
-                <p>+6281212929511</p>
-              </div>
-              <div className="flex items-center gap-2 text-sm font-thin">
-                <MailIcon size={15} />
-                <p>semravvut@gmail.com</p>
-              </div>
-              <div className="flex items-center gap-2 text-sm font-thin">
-                <MapPinIcon size={15} />
-                <p>Jl. Aneka 1 No 2 Mataram</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-4">
-            <div className="grid lg:grid-cols-4 lg:gap-0 gap-4">
-              {dataFooter.map((data, index) => (
-                <div key={index} className="flex flex-col gap-2">
-                  <p className="font-bold">{data.label}</p>
-                  {data.label === 'Follow Us' ? (
-                    <div className="flex gap-4">
-                      {data.list.map((social, index) => (
-                        <Link href={social.href} key={index} passHref>
-                          {social.path && (
+            </Link>
+
+            <p className="max-w-xs font-thin">
+              junktrip.id siap menemani setiap petualangan Anda! Ciptakan perjalanan seru dan nyaman
+              bersama kami
+            </p>
+
+            <ul className="">
+              {dataFooter.map(
+                (data, index) =>
+                  data.label === 'Follow Us' && (
+                    <div key={index} className="flex gap-4">
+                      {data.list.map((social, i) => (
+                        <li key={i}>
+                          <Link href={social.value} target="_blank" rel="noopener noreferrer">
                             <Image
-                              src={social.path}
-                              alt={social.name}
+                              src={social.path || ''}
+                              alt={social.label}
                               width={15}
                               height={15}
-                              className="transition-transform duration-200 hover:scale-110"
                             />
-                          )}
-                        </Link>
+                          </Link>
+                        </li>
                       ))}
                     </div>
-                  ) : (
-                    data.list.map((dataList, idx) => (
-                      <Link href={dataList.href} key={idx} passHref>
-                        <p className="font-thin text-sm">{dataList.name}</p>
-                      </Link>
-                    ))
-                  )}
-                </div>
-              ))}
-            </div>
+                  ),
+              )}
+            </ul>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 sm:text-start text-center">
+            {dataFooter.map(
+              (data, index) =>
+                data.label !== 'Follow Us' && (
+                  <div key={index}>
+                    <p className="font-medium">{data.label}</p>
+                    <ul className="sm:mt-4 mt-2 space-y-2 text-sm flex flex-col items-center sm:items-start">
+                      {data.list.map((item, i) => {
+                        const IconComponent = iconComponents[item.icon as IconName] || null
+                        return data.label === 'Contact Us' ? (
+                          <li key={i} className="flex items-center gap-2">
+                            {IconComponent && <IconComponent size={15} />}
+                            <p className="text-white">{item.value}</p>
+                          </li>
+                        ) : (
+                          <li key={i} className="flex items-center gap-2">
+                            <Link href={item.href || '#'}>
+                              <p className="text-white transition hover:opacity-75">{item.value}</p>
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                ),
+            )}
           </div>
         </div>
-        <div className="border-t-[0.01px] border-muted">
+
+        <div className="mt-8 border-t-[0.01px] border-muted sm:text-start text-center">
           <p className="font-thin text-xs pt-2">
-            &copy; Copyright 2024. JunkTrip All rights reserved.
+            &copy; Copyright 2024. junktrip.id All rights reserved.
           </p>
         </div>
       </div>

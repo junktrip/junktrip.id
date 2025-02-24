@@ -13,10 +13,6 @@ const navigationMenu = [
     href: '/',
   },
   {
-    label: 'Blog',
-    href: '/blog',
-  },
-  {
     label: 'Sewa Mobil',
     href: '/sewa-mobil',
   },
@@ -42,9 +38,9 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href={'/'} className="flex items-center space-x-2">
           <Image
-            src="/logo-junktrip.png"
+            src="/junktrip-header.png"
             alt="Logo"
-            className="h-8 w-auto"
+            className="md:h-16 h-10 w-auto"
             width={500}
             height={500}
           />
@@ -56,11 +52,7 @@ export const Navbar = () => {
             <Link
               href={navItem.href}
               key={index}
-              className={`${
-                pathname === navItem.href
-                  ? 'bg-primary text-white'
-                  : 'text-primary hover:text-primary/75'
-              } p-2 rounded-lg`}
+              className={`${pathname === navItem.href && 'bg-primary text-white'} p-2 rounded-lg`}
             >
               {navItem.label}
             </Link>

@@ -21,7 +21,7 @@ body {
     --popover-foreground: 0 0% 3.9%; /* Abu-abu gelap untuk teks popover */
 
     /* Primary: Hijau Pastel */
-    --primary: 217 40% 18%; /* Hijau pastel (misalnya, HSL(217, 40%, 18%)) */
+    --primary: 210 79% 32%; /* Hijau pastel (misalnya, HSL(217, 40%, 18%)) */
     --primary-foreground: 0 0% 98%; /* Putih untuk teks utama */
 
     /* Secondary */
